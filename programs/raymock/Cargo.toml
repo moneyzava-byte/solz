@@ -1,0 +1,22 @@
+[package]
+name = "raymock"
+version = "0.1.0"
+edition = "2021"
+description = "Local test double for Raydium CPMM: same program id, instruction names, accounts and state layout."
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "raymock"
+
+[features]
+default = []
+no-entrypoint = []
+cpi = ["no-entrypoint"]
+idl-build = []
+
+[lints.rust]
+unexpected_cfgs = { level = "allow" }
+
+[dependencies]
+anchor-lang = { version = "=1.2.1", features = ["init-if-needed"] }
+anchor-spl = { version = "=1.2.1", default-features = false, features = ["solana-v3", "associated_token", "token", "token_2022", "token_2022_extensions"] }
