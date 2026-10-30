@@ -1,0 +1,25 @@
+[package]
+name = "solz"
+version = "0.1.0"
+edition = "2021"
+description = "SOLZ: mined with SOL, never minted. Fixed rules, no owner."
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "solz"
+
+[features]
+default = []
+no-entrypoint = []
+cpi = ["no-entrypoint"]
+idl-build = ["anchor-lang/idl-build", "anchor-spl/idl-build"]
+devnet = []
+localnet = []
+fast = []
+
+[lints.rust]
+unexpected_cfgs = { level = "allow" }
+
+[dependencies]
+anchor-lang = { version = "=1.2.1", features = ["init-if-needed"] }
+anchor-spl = { version = "=1.2.1", default-features = false, features = ["solana-v3", "associated_token", "token", "token_2022", "token_2022_extensions"] }
